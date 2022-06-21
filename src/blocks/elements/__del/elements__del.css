@@ -1,0 +1,22 @@
+.elements__del {
+    background-image: url(../../../images/del.svg);
+    background-color: transparent;
+    border: none;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 19px;
+    width: 18px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 0;
+    z-index: 1;
+    cursor: pointer;
+    opacity: 1;
+    transition: 0.5s;
+    visibility: hidden;
+}
+
+.elements__del:hover {
+    opacity: 0.5;
+}
