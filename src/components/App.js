@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import '../index.css';
 import Header from './Header';
 import Main from './Main';
@@ -10,6 +11,10 @@ import { api } from '../utils/api.js';
 import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup' 
 import AddPlacePopup from './AddPlacePopup';
+import Register from './Register';
+import Login from './Login';
+import * as auth from '../auth.js';
+import ProtectedRoute from "./ProtectedRoute";
 
 class App extends React.Component{
   
@@ -20,9 +25,28 @@ class App extends React.Component{
       isEditProfilePopupOpen: false,
       isAddPlacePopupOpen: false,
       isEditAvatarPopupOpen: false,
+      isRegister: false,
       currentUser: null,
-      cards: []
+      cards: [],
+      loggedIn: false
     }
+
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleTokenCheck = this.handleTokenCheck.bind(this);
+  }
+
+  handleLogin() {
+    this.setState({
+      loggedIn: true
+     
+    })
+  }
+
+  handleRegister() {
+    this.setState({
+      isRegister: true
+     
+    })
   }
 
   setCards(cards) {
@@ -85,8 +109,6 @@ class App extends React.Component{
     })
   }
   
-
-
   handleEditAvatarClick = () => {
   this.setState({isEditAvatarPopupOpen: true});
 }
@@ -126,6 +148,24 @@ componentDidMount() {
   .catch((err)=>{
     console.log(err);
   })
+
+  this.handleTokenCheck();
+}
+
+handleTokenCheck(){
+  if (localStorage.getItem('jwt')){
+  const jwt = localStorage.getItem('jwt');
+  // проверяем токен пользователя
+  auth.checkToken(jwt).then((res) => {
+    if (res){
+      this.setState({
+        loggedIn: true
+      }, () => {
+        this.props.history.push("/");
+      });
+    }
+  }); 
+}
 }
 
 handlerAddCard = (name, link) =>{
@@ -141,45 +181,59 @@ render() {
     <CurrentUserContext.Provider value={this.state.currentUser}>
       <div className="App page">
       <Header />
-      <Main 
-          onEditAvatar={this.handleEditAvatarClick}
-          onEditProfile={this.handleEditProfileClick}
-          onAddPlace={this.handleAddPlaceClick}
-          userName={this.state.userName}
-          userDescription={this.state.userDescription}
-          userAvatar={this.state.userAvatar}
-          cards={this.state.cards}
-          userId={this.state.userId}
-          handleCardClick={this.handleCardClick}
-          handleCardDelete={this.handleCardDelete}
-          handleCardLike={this.handleCardLike}
-      />
-        <EditAvatarPopup 
-          isOpen={this.state.isEditAvatarPopupOpen}
-          onClose={this.closeAllPopups}
-          onUpdateAvatar={this.handleUpdateAvatar}
-           /> 
-        <EditProfilePopup 
-          isOpen={this.state.isEditProfilePopupOpen} 
-          onClose={this.closeAllPopups}
-          onUpdateUser={this.handleUpdateUser} />
-        <AddPlacePopup 
-          isOpen={this.state.isAddPlacePopupOpen} 
-          onClose={this.closeAllPopups}
-          onAddCard={this.handlerAddCard}
-          />
-        <PopupWithForm
-          name="delete"
-          title="Вы уверены?"
-          buttonText="Да"
-          buttonSecondText=" "  
-          isOpen={false}
-          onClose={this.closeAllPopups}>
-        </PopupWithForm>
-        <ImagePopup
-          card={this.state.selectedCard} 
-          onClose={this.closeAllPopups}/>
-        <Footer />         
+      <Switch>
+        <Route path="/register">
+          <Register isOpen={this.handleRegister}/>
+        </Route>
+        <Route path="/login">
+          <Login isOpen={this.handleLogin} />
+        </Route>
+        <ProtectedRoute exact
+          path="/"
+          loggedIn={this.state.loggedIn}
+          component={Main}
+        >
+          <Main 
+              onEditAvatar={this.handleEditAvatarClick}
+              onEditProfile={this.handleEditProfileClick}
+              onAddPlace={this.handleAddPlaceClick}
+              userName={this.state.userName}
+              userDescription={this.state.userDescription}
+              userAvatar={this.state.userAvatar}
+              cards={this.state.cards}
+              userId={this.state.userId}
+              handleCardClick={this.handleCardClick}
+              handleCardDelete={this.handleCardDelete}
+              handleCardLike={this.handleCardLike}
+              />
+            <EditAvatarPopup 
+              isOpen={this.state.isEditAvatarPopupOpen}
+              onClose={this.closeAllPopups}
+              onUpdateAvatar={this.handleUpdateAvatar}
+              /> 
+            <EditProfilePopup 
+              isOpen={this.state.isEditProfilePopupOpen} 
+              onClose={this.closeAllPopups}
+              onUpdateUser={this.handleUpdateUser} />
+            <AddPlacePopup 
+              isOpen={this.state.isAddPlacePopupOpen} 
+              onClose={this.closeAllPopups}
+              onAddCard={this.handlerAddCard}
+              />
+            <PopupWithForm
+              name="delete"
+              title="Вы уверены?"
+              buttonText="Да"
+              buttonSecondText=" "  
+              isOpen={false}
+              onClose={this.closeAllPopups}>
+            </PopupWithForm>
+            <ImagePopup
+              card={this.state.selectedCard} 
+              onClose={this.closeAllPopups}/>
+            <Footer />
+          </ProtectedRoute>
+        </Switch>  
         </div>    
     </CurrentUserContext.Provider>
   );
