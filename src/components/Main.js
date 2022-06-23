@@ -24,7 +24,7 @@ class Main extends React.Component {
           <button className="profile__add-button" type="button" onClick={this.props.onAddPlace}></button>
         </section>
         <section className="elements">
-        {this.props?.cards.map((card, _id) => (
+        {this.props?.cards?.map((card, _id) => (
               <Card 
                 key = {card._id}
                 id = {card._id}

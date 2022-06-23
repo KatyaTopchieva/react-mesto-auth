@@ -39,6 +39,7 @@ class Register extends React.Component {
           title="Регистрация"
           buttonText="Зарегистрироваться"
           buttonSecondText=""
+          isOpen={true}
           onSubmit={this.handleSubmit}
         >
           <div className="popup__input-container">

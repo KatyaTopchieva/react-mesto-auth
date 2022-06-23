@@ -25,9 +25,9 @@ class App extends React.Component{
       isEditProfilePopupOpen: false,
       isAddPlacePopupOpen: false,
       isEditAvatarPopupOpen: false,
-      isRegister: false,
       currentUser: null,
       cards: [],
+      isRegister: false,
       loggedIn: false
     }
 
@@ -149,7 +149,7 @@ componentDidMount() {
     console.log(err);
   })
 
-  this.handleTokenCheck();
+ // this.handleTokenCheck();
 }
 
 handleTokenCheck(){
@@ -183,30 +183,31 @@ render() {
       <Header />
       <Switch>
         <Route path="/register">
-          <Register isOpen={this.handleRegister}/>
+          <Register />
         </Route>
         <Route path="/login">
-          <Login isOpen={this.handleLogin} />
+          <Login  />
         </Route>
         <ProtectedRoute exact
-          path="/"
-          loggedIn={this.state.loggedIn}
-          component={Main}
-        >
-          <Main 
-              onEditAvatar={this.handleEditAvatarClick}
-              onEditProfile={this.handleEditProfileClick}
-              onAddPlace={this.handleAddPlaceClick}
-              userName={this.state.userName}
-              userDescription={this.state.userDescription}
-              userAvatar={this.state.userAvatar}
-              cards={this.state.cards}
-              userId={this.state.userId}
-              handleCardClick={this.handleCardClick}
-              handleCardDelete={this.handleCardDelete}
-              handleCardLike={this.handleCardLike}
-              />
-            <EditAvatarPopup 
+            path="/"
+            loggedIn={this.state.loggedIn}
+            component={Main}
+            onEditAvatar={this.handleEditAvatarClick}
+            onEditProfile={this.handleEditProfileClick}
+            onAddPlace={this.handleAddPlaceClick}
+            userName={this.state.userName}
+            userDescription={this.state.userDescription}
+            userAvatar={this.state.userAvatar}
+            cards={this.state.cards}
+            userId={this.state.userId}
+            handleCardClick={this.handleCardClick}
+            handleCardDelete={this.handleCardDelete}
+            handleCardLike={this.handleCardLike}
+          >
+            <Main />
+          </ProtectedRoute>
+        </Switch>
+        <EditAvatarPopup 
               isOpen={this.state.isEditAvatarPopupOpen}
               onClose={this.closeAllPopups}
               onUpdateAvatar={this.handleUpdateAvatar}
@@ -232,8 +233,6 @@ render() {
               card={this.state.selectedCard} 
               onClose={this.closeAllPopups}/>
             <Footer />
-          </ProtectedRoute>
-        </Switch>  
         </div>    
     </CurrentUserContext.Provider>
   );
