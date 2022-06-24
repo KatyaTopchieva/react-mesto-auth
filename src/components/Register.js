@@ -35,6 +35,7 @@ class Register extends React.Component {
   render() {
     return(
        <div className= "register">
+        <button className="register__button-login" type="button">Вход</button>
         <PopupWithForm
           name="register"
           title="Регистрация"

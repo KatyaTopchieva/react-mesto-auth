@@ -2,6 +2,7 @@ import React from "react";
 import './styles/Login.css';
 import * as auth from '../auth.js';
 import PopupWithForm from './PopupWithForm';
+import './styles/Login.css';
 
 class Login extends React.Component {
     constructor(props) {
@@ -42,6 +43,8 @@ class Login extends React.Component {
       }
       render() {
           return(
+            <>
+              <button className="login__button-register" type="button">Регистрация</button>
               <PopupWithForm
                 name="login"
                 title="Вход"
@@ -73,6 +76,7 @@ class Login extends React.Component {
                     <span className="popup__error password-input-error"></span>
                 </div>
               </PopupWithForm>
+            </>
           )
       }
 }

@@ -1,0 +1,77 @@
+.popup_type_login {
+    background-color: #000;
+    z-index: -1;
+    position: static;
+    justify-content: flex-start;
+    margin-top: 24px;
+}
+
+.popup__form {
+    background-color: #000;
+    color: #FFF;
+}
+
+.popup__form-title {
+    text-align: center;
+    color: #FFF;
+}
+
+.popup__input-container {
+    padding-bottom: 162px;
+}
+
+.popup__input {
+    border-bottom: 2px solid #CCCCCC;
+    color: #FFF;
+}
+
+.popup__close-button {
+    visibility: hidden;
+}
+
+.popup__button {
+    background-color: #FFF;
+    color: #000;
+    margin-bottom: 18px;
+}
+
+.login__button-register {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFF;
+    background-color: #000;
+    position: fixed;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+@media screen and (min-width: 320px) {
+    .login__button-register {
+        top: 28px;
+        right: 8vh;
+    }
+}
+
+@media screen and (min-width: 540px) {
+    .login__button-register {
+        top: 51px;
+        right: 12vh;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .login__button-register {
+        right: 23%;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .login__button-register {
+        right: 26%;
+    }
+}
