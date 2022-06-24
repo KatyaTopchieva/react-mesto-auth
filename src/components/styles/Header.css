@@ -1,0 +1,16 @@
+.header__button-container {
+    position: absolute;
+    top: 51pc;
+    right: 16%;
+    
+}
+
+.header__button-login {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFF;
+    background-color: #000;
+}

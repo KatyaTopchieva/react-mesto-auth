@@ -1,7 +1,6 @@
 .popup_type_register {
     background-color: #000;
     z-index: -1;
-    height: content;
     position: static;
 }
 
@@ -34,6 +33,21 @@
     margin-bottom: 18px;
 }
 
+.register__button-login {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFF;
+    background-color: #000;
+    position: fixed;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
 .register__signin {
     display: flex;
     align-items: center;
@@ -60,4 +74,30 @@
     margin-left: 5px;
     text-decoration: none;
     cursor: pointer;
+}
+
+@media screen and (min-width: 320px) {
+    .register__button-login {
+        top: 28px;
+        right: 8vh;
+    }
+}
+
+@media screen and (min-width: 540px) {
+    .register__button-login {
+        top: 51px;
+        right: 12vh;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .register__button-login {
+        right: 23%;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .register__button-login {
+        right: 26%;
+    }
 }
