@@ -47,6 +47,7 @@ class Login extends React.Component {
                 title="Вход"
                 buttonText="Войти"
                 buttonSecondText=""
+                isOpen={true}
                 onSubmit={this.handleSubmit}
               >
                 <div className="popup__input-container">

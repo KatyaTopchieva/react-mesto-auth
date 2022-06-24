@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import * as auth from '../auth.js';
 import PopupWithForm from './PopupWithForm';
+import './styles/Register.css';
 
 class Register extends React.Component {
   constructor(props) {
@@ -33,7 +34,7 @@ class Register extends React.Component {
   }
   render() {
     return(
-       <>
+       <div className= "register">
         <PopupWithForm
           name="register"
           title="Регистрация"
@@ -65,11 +66,11 @@ class Register extends React.Component {
               <span className="popup__error password-input-error"></span>
           </div>
         </PopupWithForm>
-         <div className="register__signin">
-         <p>Уже зарегистрированы?</p>
-         <Link to="login" className="register__login-link">Войти</Link>
-       </div>
-      </>
+        <div className="register__signin">
+            <p>Уже зарегистрированы?</p>
+            <Link to="login" className="register__login-link">Войти</Link>
+        </div>
+      </div>
     )
   }
 }

@@ -205,6 +205,7 @@ render() {
             handleCardLike={this.handleCardLike}
           >
             <Main />
+            <Footer />
           </ProtectedRoute>
         </Switch>
         <EditAvatarPopup 
@@ -232,7 +233,6 @@ render() {
             <ImagePopup
               card={this.state.selectedCard} 
               onClose={this.closeAllPopups}/>
-            <Footer />
         </div>    
     </CurrentUserContext.Provider>
   );
