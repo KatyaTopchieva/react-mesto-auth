@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import '../index.css';
 import Header from './Header';
 import Main from './Main';
@@ -182,14 +182,8 @@ render() {
       <div className="App page">
       <Header />
       <Switch>
-        <Route path="/register">
-          <Register />
-        </Route>
-        <Route path="/login">
-          <Login  />
-        </Route>
-        <ProtectedRoute exact
-            path="/"
+        <ProtectedRoute 
+            exact path="/"
             loggedIn={this.state.loggedIn}
             component={Main}
             onEditAvatar={this.handleEditAvatarClick}
@@ -207,6 +201,15 @@ render() {
             <Main />
             <Footer />
           </ProtectedRoute>
+          <Route path="/sign-up">
+            <Register />
+          </Route>
+          <Route path="/sign-in">
+            <Login />
+          </Route>
+          <Route exact path="/">
+            {this.state.loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
+          </Route>
         </Switch>
         <EditAvatarPopup 
               isOpen={this.state.isEditAvatarPopupOpen}

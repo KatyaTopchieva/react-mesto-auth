@@ -46,6 +46,7 @@
     position: fixed;
     border: none;
     cursor: pointer;
+    text-decoration: none;
     padding: 0;
     margin: 0;
 }

@@ -27,7 +27,7 @@ class Register extends React.Component {
         auth.register(this.state.password, this.state.email)
         .then((res) => {
           if(res.statusCode !== 400){
-            this.props.history.push('/login');
+            this.props.history.push('/sign-in');
           }
         });
       }
@@ -35,7 +35,7 @@ class Register extends React.Component {
   render() {
     return(
        <div className= "register">
-        <button className="register__button-login" type="button">Вход</button>
+        <Link to="/sign-in" className="register__button-login">Вход</Link>
         <PopupWithForm
           name="register"
           title="Регистрация"
@@ -69,11 +69,11 @@ class Register extends React.Component {
         </PopupWithForm>
         <div className="register__signin">
             <p>Уже зарегистрированы?</p>
-            <Link to="login" className="register__login-link">Войти</Link>
+            <Link to="/sign-in" className="register__login-link">Войти</Link>
         </div>
       </div>
     )
   }
 }
 
-export default withRouter(Register);
+export default withRouter (Register);

@@ -2,6 +2,7 @@ import React from "react";
 import './styles/Login.css';
 import * as auth from '../auth.js';
 import PopupWithForm from './PopupWithForm';
+import { Link, withRouter } from 'react-router-dom';
 import './styles/Login.css';
 
 class Login extends React.Component {
@@ -44,7 +45,7 @@ class Login extends React.Component {
       render() {
           return(
             <>
-              <button className="login__button-register" type="button">Регистрация</button>
+              <Link to="/sign-up" className="login__button-register">Регистрация</Link>
               <PopupWithForm
                 name="login"
                 title="Вход"
@@ -81,4 +82,4 @@ class Login extends React.Component {
       }
 }
 
-export default Login;
+export default withRouter (Login);
