@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import * as auth from '../auth.js';
+import * as auth from '../Auth.js';
 import PopupWithForm from './PopupWithForm';
 import './styles/Register.css';
 
@@ -22,11 +22,21 @@ class Register extends React.Component {
   }
   handleSubmit = (e) => {
     e.preventDefault();
+
+    // const { username, password, email } = this.state;
+    // duckAuth.register(username, password, email).then((res) => {
+    //   if(res){
+    //     this.setState({
+    //       message: ''
+    //     }, () => {
+    //       this.props.history.push('/login');
+    //     })
+
     // здесь обработчик регистрации
     if (this.state.password){
         auth.register(this.state.password, this.state.email)
         .then((res) => {
-          if(res.statusCode !== 400){
+          if( !res.error && res.data){
             this.props.history.push('/sign-in');
           }
         });
@@ -42,7 +52,7 @@ class Register extends React.Component {
           buttonText="Зарегистрироваться"
           buttonSecondText=""
           isOpen={true}
-          onSubmit={this.handleSubmit}
+          submit={this.handleSubmit}
         >
           <div className="popup__input-container">
               <input type="email"

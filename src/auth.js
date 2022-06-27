@@ -7,12 +7,10 @@ export const register = (password, email) => {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(
-        {
-            "password": "somepassword",
-            "email": "email@yandex.ru" 
-        } 
-    )
+    body: JSON.stringify({
+            "password": password,
+            "email": email 
+        })
   })
   .then((response) => {
     return response.json();
@@ -23,7 +21,7 @@ export const register = (password, email) => {
   .catch((err) => console.log(err));
 };
 
-export const authorize = (identifier, password) => {
+export const authorize = (email, password) => {
     return fetch(`${BASE_URL}/signin`, {
       method: 'POST',
       headers: {
@@ -31,14 +29,14 @@ export const authorize = (identifier, password) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        "password": "dsfsdfsdfsdf",
-        "email": "email@email.ru"
-      })
+        "password": password,
+        "email": email 
+       })
     })
     .then((response => response.json()))
     .then((data) => {
-      if (data.user){
-        localStorage.setItem('jwt', data.jwt);
+      if (data.token){
+        localStorage.setItem('token', data.token);
         return data;
       } 
     })

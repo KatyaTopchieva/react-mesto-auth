@@ -13,8 +13,9 @@ import EditAvatarPopup from './EditAvatarPopup'
 import AddPlacePopup from './AddPlacePopup';
 import Register from './Register';
 import Login from './Login';
-import * as auth from '../auth.js';
+import * as auth from '../Auth.js';
 import ProtectedRoute from "./ProtectedRoute";
+import { withRouter } from 'react-router-dom';
 
 class App extends React.Component{
   
@@ -38,15 +39,31 @@ class App extends React.Component{
   handleLogin() {
     this.setState({
       loggedIn: true
-     
     })
   }
 
   handleRegister() {
     this.setState({
       isRegister: true
-     
     })
+  }
+
+  handleTokenCheck = () => {
+    if (localStorage.getItem('token')){
+    const jwt = localStorage.getItem('token');
+    // проверяем токен пользователя
+    return auth.checkToken(jwt)
+    .then((res) => {
+      if (res){
+        this.setState({
+          loggedIn: true
+        }, () => {
+          this.props.history.push("/");
+        });
+      }
+    })
+    .then((data) => data); 
+   }
   }
 
   setCards(cards) {
@@ -133,6 +150,13 @@ closeAllPopups = () => {
 }
 
 componentDidMount() {
+  this.handleTokenCheck()
+  .then(data =>{
+    this.loadData();
+  });
+}
+
+loadData() {
   Promise.all([
     api.getUserInfo(),
     api.getCard()
@@ -142,30 +166,12 @@ componentDidMount() {
         const userId = res._id;
         this.handleRefreshUser(res); 
         const cards = values[1];
-        this.setCards(cards);
-      })
-  
+        this.setCards(cards);        
+      })  
   .catch((err)=>{
     console.log(err);
   })
 
- // this.handleTokenCheck();
-}
-
-handleTokenCheck(){
-  if (localStorage.getItem('jwt')){
-  const jwt = localStorage.getItem('jwt');
-  // проверяем токен пользователя
-  auth.checkToken(jwt).then((res) => {
-    if (res){
-      this.setState({
-        loggedIn: true
-      }, () => {
-        this.props.history.push("/");
-      });
-    }
-  }); 
-}
 }
 
 handlerAddCard = (name, link) =>{
@@ -202,10 +208,10 @@ render() {
             <Footer />
           </ProtectedRoute>
           <Route path="/sign-up">
-            <Register />
+            <Register handleRegister={this.handleRegister} />
           </Route>
           <Route path="/sign-in">
-            <Login />
+            <Login handleLogin={this.handleLogin} />
           </Route>
           <Route exact path="/">
             {this.state.loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
@@ -242,4 +248,4 @@ render() {
  }
 }
 
-export default App;
+export default withRouter(App);
