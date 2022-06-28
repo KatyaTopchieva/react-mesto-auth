@@ -1,8 +1,34 @@
-.header__email-button-cjntainer {
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 68.7%;
+    max-width: 880px;
+    height: 119px;
+    padding: 0;
+    margin: 0 auto;
+    border-bottom: 1px solid #545454;
+}
+
+.header__email-button-container {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
+    margin: 0;
+    padding: 0;
+    visibility: hidden;
+}
+
+.header__email-button-container_visible {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    visibility: visible;
 }
 
 .header__email {
@@ -12,21 +38,38 @@
     font-size: 18px;
     line-height: 22px;
     color: #FFF;
+    margin: 0;
+    padding: 0;
 }
 
-/* .header__button-container {
-    position: absolute;
-    top: 51pc;
-    right: 16%;
-    
-}
-
-.header__button-login {
+.header__button-exit {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 22px;
     color: #FFF;
-    background-color: #000;
-} */
+    text-decoration: none;
+    padding: 0;
+    margin-left: 24px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 960px) {
+    .header {
+        width: 83%;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .header {
+        width: 80%;
+        height: 84px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .header {
+        width: 100%;
+    }
+}

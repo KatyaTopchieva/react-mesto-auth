@@ -1,7 +1,13 @@
+.register {
+    height: 100vh;
+    background-color: #000;
+}
+
 .popup_type_register {
     background-color: #000;
-    z-index: -1;
     position: static;
+    
+    justify-content: flex-start;
 }
 
 .popup__form {

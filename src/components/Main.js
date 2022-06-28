@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "./Card";
-import {CurrentUserContext} from '../contexts/CurrentUserContext'
+import {CurrentUserContext} from '../contexts/CurrentUserContext';
 
 class Main extends React.Component {
   static contextType = CurrentUserContext;

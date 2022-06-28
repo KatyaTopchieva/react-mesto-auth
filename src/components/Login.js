@@ -29,12 +29,13 @@ class Login extends React.Component {
         }
         auth.authorize(this.state.email, this.state.password)
         .then((data) => {
-          if(data.token) {
+          if(data.token) {          
+
             this.setState({  // сбросьте стейт, затем в колбэке установите
               email: '', 
               password: '' // затем перенаправьте его в /
             }, () => {
-              this.props.handleLogin();// стейт loggedIn родительского App как true,
+              this.props.handleLogin();
               this.props.history.push('/');
             })
           }  

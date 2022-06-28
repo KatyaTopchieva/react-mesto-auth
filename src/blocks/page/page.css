@@ -1,10 +1,11 @@
 .page {
     min-width: 320px;
-    height: 100vh;
+    height: 100%;
     margin: 0 auto;
     background-color: #000;
     font-family: 'Inter', Arial, sans-serif;
     color: #FFF;
     text-rendering: optimizeLegibility;
     box-sizing: border-box;
+    z-index: 0;
 }

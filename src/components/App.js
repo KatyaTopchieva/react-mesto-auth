@@ -29,17 +29,22 @@ class App extends React.Component{
       currentUser: null,
       cards: [],
       isRegister: false,
-      loggedIn: false
+      loggedIn: false,
+      email: ''
     }
 
     this.handleLogin = this.handleLogin.bind(this);
     this.handleTokenCheck = this.handleTokenCheck.bind(this);
   }
 
-  handleLogin() {
+  handleLogin = () => {
+    const email = localStorage.getItem('email');
+
     this.setState({
-      loggedIn: true
+      loggedIn: true,
+      email: email
     })
+    this.loadData();
   }
 
   handleRegister() {
@@ -55,14 +60,19 @@ class App extends React.Component{
     return auth.checkToken(jwt)
     .then((res) => {
       if (res){
+        this.loadData();
         this.setState({
-          loggedIn: true
+          loggedIn: true,
+          email: localStorage.getItem('email')
         }, () => {
           this.props.history.push("/");
         });
       }
     })
-    .then((data) => data); 
+    .then((data) => data)
+    .catch(e => {
+      console.log(e)
+    }); 
    }
   }
 
@@ -91,8 +101,7 @@ class App extends React.Component{
           .catch((err)=>{
             console.log(err);
           })
-    }else
-    {
+    } else {
         api.addLike(id)
           .catch((err)=>{
             console.log(err);
@@ -151,9 +160,6 @@ closeAllPopups = () => {
 
 componentDidMount() {
   this.handleTokenCheck()
-  .then(data =>{
-    this.loadData();
-  });
 }
 
 loadData() {
@@ -174,6 +180,16 @@ loadData() {
 
 }
 
+handleExit = () => {
+  localStorage.removeItem('token');
+  localStorage.removeItem('email');
+  this.props.history.push('/sign-in');
+  this.setState({
+    loggedIn: false,
+    email: ''
+  })
+}
+
 handlerAddCard = (name, link) =>{
 
   api.addCard(name, link)
@@ -186,7 +202,11 @@ render() {
   return (
     <CurrentUserContext.Provider value={this.state.currentUser}>
       <div className="App page">
-      <Header />
+      <Header 
+      loggedIn={this.state.loggedIn}
+      onExit={this.handleExit}
+      email={this.state.email}
+      />
       <Switch>
         <ProtectedRoute 
             exact path="/"
@@ -205,7 +225,7 @@ render() {
             handleCardLike={this.handleCardLike}
           >
             <Main />
-            <Footer />
+            
           </ProtectedRoute>
           <Route path="/sign-up">
             <Register handleRegister={this.handleRegister} />
@@ -242,6 +262,7 @@ render() {
             <ImagePopup
               card={this.state.selectedCard} 
               onClose={this.closeAllPopups}/>
+            <Footer />
         </div>    
     </CurrentUserContext.Provider>
   );

@@ -23,16 +23,6 @@ class Register extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    // const { username, password, email } = this.state;
-    // duckAuth.register(username, password, email).then((res) => {
-    //   if(res){
-    //     this.setState({
-    //       message: ''
-    //     }, () => {
-    //       this.props.history.push('/login');
-    //     })
-
-    // здесь обработчик регистрации
     if (this.state.password){
         auth.register(this.state.password, this.state.email)
         .then((res) => {
@@ -44,7 +34,7 @@ class Register extends React.Component {
   }
   render() {
     return(
-       <div className= "register">
+      <div className= "register">
         <Link to="/sign-in" className="register__button-login">Вход</Link>
         <PopupWithForm
           name="register"
