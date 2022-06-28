@@ -6,6 +6,7 @@ class Main extends React.Component {
   static contextType = CurrentUserContext;
   constructor(props) {
     super(props);
+    this.props.handleButton();
   }
 
   render(){

@@ -1,8 +1,8 @@
 .popup_type_login {
     background-color: #000;
-    z-index: -1;
     position: static;
     justify-content: flex-start;
+    height: 100vh;
     margin-top: 24px;
 }
 

@@ -8,6 +8,15 @@ class Header extends React.Component {
       super(props);
     }
 
+
+    click = ()=>{
+      if(this.props.signLable === "Выйти"){
+        this.props.onExit();
+      }
+
+      this.props.history.push(this.props.signPath);      
+    }
+
     render(){
       return(
         <header className="header">
@@ -15,7 +24,8 @@ class Header extends React.Component {
             <div className={this.props.loggedIn ?
                   'header__email-button-container_visible' : 'header__email-button-container'}>
                 <p className="header__email">{this.props.email}</p>
-                <button type="button" onClick={this.props.onExit} className="header__button-exit">Выйти</button>
+                <button type="button" onClick={this.click}
+                className="header__button-exit">{this.props.signLable}</button>
             </div>
         </header>
       )

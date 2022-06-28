@@ -30,7 +30,9 @@ class App extends React.Component{
       cards: [],
       isRegister: false,
       loggedIn: false,
-      email: ''
+      email: '',
+      signPath: '',
+      signLable: ''
     }
 
     this.handleLogin = this.handleLogin.bind(this);
@@ -75,6 +77,27 @@ class App extends React.Component{
     }); 
    }
   }
+
+handleRouteLogin = () => {
+  this.setState({
+    signLable: 'Регистрация',
+    signPath: '/sign-up'
+  })
+}
+
+handleRouteRegister = () => {
+  this.setState({
+    signLable: 'Вход',
+    signPath: '/sign-in'
+  })
+}
+
+handleRouteExit = () => {
+  this.setState({
+    signLable: 'Выйти',
+    signPath: '/sign-in'
+  })
+}
 
   setCards(cards) {
     this.setState({
@@ -183,7 +206,6 @@ loadData() {
 handleExit = () => {
   localStorage.removeItem('token');
   localStorage.removeItem('email');
-  this.props.history.push('/sign-in');
   this.setState({
     loggedIn: false,
     email: ''
@@ -206,6 +228,8 @@ render() {
       loggedIn={this.state.loggedIn}
       onExit={this.handleExit}
       email={this.state.email}
+      signPath={this.state.signPath}
+      signLable={this.state.signLable}
       />
       <Switch>
         <ProtectedRoute 
@@ -223,15 +247,22 @@ render() {
             handleCardClick={this.handleCardClick}
             handleCardDelete={this.handleCardDelete}
             handleCardLike={this.handleCardLike}
+            handleButton={this.handleRouteExit}
           >
             <Main />
             
           </ProtectedRoute>
           <Route path="/sign-up">
-            <Register handleRegister={this.handleRegister} />
+            <Register
+            handleRegister={this.handleRegister}
+            handleButton={this.handleRouteRegister}
+          />
           </Route>
           <Route path="/sign-in">
-            <Login handleLogin={this.handleLogin} />
+            <Login 
+            handleLogin={this.handleLogin}
+            handleButton={this.handleRouteLogin}
+          />
           </Route>
           <Route exact path="/">
             {this.state.loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
