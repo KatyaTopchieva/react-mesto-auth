@@ -39,7 +39,7 @@ class InfoTooltip extends React.Component {
                 submit={this.handleSubmit}
               >
                   
-                      <img src={this.state.image} alt="Подсказка"/> 
+                      <img className='popup__infotooltip-image' src={success} alt="Подсказка"/> 
                   
               </PopupWithForm>
         )

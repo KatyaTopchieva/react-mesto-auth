@@ -15,13 +15,11 @@ class PopupWithForm extends React.Component {
             <h2 className={`popup__form-title popup__form-title_${this.props.name}`}>{this.props.title}</h2>
             <fieldset className="popup__fieldset">
               {this.props.children}
-              <div className="popup__button-container">
+             
                 <button className={`popup__button popup__button_${this.props.name}`} type="submit" onClick={this.props.submit}>
                   {this.props.buttonText}
                 </button>
-                <button className="popup__button popup__button_condition_saving"
-                 type="submit">{this.props.buttonSecondText}</button>
-              </div>
+            
             </fieldset>
           </form>
         </div>

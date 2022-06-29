@@ -1,0 +1,11 @@
+
+
+
+.popup__infotooltip-image {
+    height: 120px;
+}
+
+.popup__button_infotooltip {
+   visibility: hidden;
+   opacity: 1;
+}

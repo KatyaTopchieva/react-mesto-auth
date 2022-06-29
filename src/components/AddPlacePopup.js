@@ -26,7 +26,6 @@ function AddPlacePopup(props) {
           name="card"
           title="Новое место"
           buttonText="Сохранить"
-          buttonSecondText="Сохранение..."  
           isOpen={props.isOpen}
           onClose={props.onClose}
           submit={submit}

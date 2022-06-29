@@ -24,7 +24,6 @@ return (
         name="avatar"
         title="Обновить аватар"
         buttonText="Сохранить"
-        buttonSecondText="Сохранение..."  
         isOpen={props.isOpen}
         onClose={props.onClose}
         submit={submit}

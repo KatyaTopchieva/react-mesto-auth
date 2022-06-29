@@ -296,8 +296,7 @@ render() {
             <PopupWithForm
               name="delete"
               title="Вы уверены?"
-              buttonText="Да"
-              buttonSecondText=" "  
+              buttonText="Да" 
               isOpen={false}
               onClose={this.closeAllPopups}>
             </PopupWithForm>
