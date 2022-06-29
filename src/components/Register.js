@@ -30,7 +30,7 @@ class Register extends React.Component {
         .then((res) => {
           if( !res.error && res.data){
             this.props.handleInfoTooltipPopupOpen(true);
-            //this.props.history.push('/sign-in');            
+            this.props.history.push('/sign-in');            
           }
           else{
             this.props.handleInfoTooltipPopupOpen(false);

@@ -7,24 +7,25 @@ import failed from '../images/failed.png';
 class InfoTooltip extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            title: '',
-            image: ''
-        }
+
     }
 
-    componentDidMount(){
+
+    getTitle(){
         if(this.props.isRegisterSuccess){
-            this.setState({
-                title: "Вы успешно зарегистрировались!",
-                image: {success}
-            })
-        }else
+            return "Вы успешно зарегистрировались!";
+          }else
         {
-            this.setState({
-                title: "Что-то пошло не так!\r\n Попробуйте ещё раз.",
-                image: {failed}
-            })
+            return "Что-то пошло не так!\r\n Попробуйте ещё раз.";
+        }       
+    }
+
+    getImage(){
+        if(this.props.isRegisterSuccess){
+            return success;
+          }else
+        {
+            return failed;
         }
     }
 
@@ -32,14 +33,14 @@ class InfoTooltip extends React.Component {
          return (
             <PopupWithForm
                 name="infotooltip"
-                title={this.state.title}
+                title={this.getTitle()}
                 buttonText=""
-                buttonSecondText=""
                 isOpen={this.props.isOpen}
                 submit={this.handleSubmit}
+                onClose={this.props.onClose}
               >
                   
-                      <img className='popup__infotooltip-image' src={success} alt="Подсказка"/> 
+                      <img className='popup__infotooltip-image' src={this.getImage()} alt="Подсказка"/> 
                   
               </PopupWithForm>
         )

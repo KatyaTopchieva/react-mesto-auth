@@ -304,7 +304,7 @@ render() {
               card={this.state.selectedCard} 
               onClose={this.closeAllPopups}/>
             <InfoTooltip 
-            isOpen={this.state.isTooltipPopupOpen}
+             isOpen={this.state.isTooltipPopupOpen}
              onClose={this.closeAllPopups}
              isRegisterSuccess={this.state.isRegisterSuccess}
             />
