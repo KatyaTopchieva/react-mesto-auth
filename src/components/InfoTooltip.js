@@ -10,7 +10,6 @@ class InfoTooltip extends React.Component {
 
     }
 
-
     getTitle(){
         if(this.props.isRegisterSuccess){
             return "Вы успешно зарегистрировались!";
@@ -38,10 +37,8 @@ class InfoTooltip extends React.Component {
                 isOpen={this.props.isOpen}
                 submit={this.handleSubmit}
                 onClose={this.props.onClose}
-              >
-                  
-                      <img className='popup__infotooltip-image' src={this.getImage()} alt="Подсказка"/> 
-                  
+              >    
+                 <img className='popup__infotooltip-image' src={this.getImage()} alt="Подсказка"/>   
               </PopupWithForm>
         )
     }

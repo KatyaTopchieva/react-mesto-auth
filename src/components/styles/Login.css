@@ -3,7 +3,6 @@
     position: static;
     justify-content: flex-start;
     height: 100vh;
-    margin-top: 24px;
 }
 
 .popup__form_login {
@@ -32,7 +31,7 @@
 .popup__button_login {
     background-color: #FFF;
     color: #000;
-    margin-bottom: 18px;
+    margin-top: 216px;
 }
 
 .login__button-register {

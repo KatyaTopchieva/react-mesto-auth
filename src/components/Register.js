@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import * as auth from '../Auth.js';
+import * as auth from '../auth.js';
 import PopupWithForm from './PopupWithForm';
 import './styles/Register.css';
 

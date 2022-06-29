@@ -13,7 +13,7 @@ import EditAvatarPopup from './EditAvatarPopup'
 import AddPlacePopup from './AddPlacePopup';
 import Register from './Register';
 import Login from './Login';
-import * as auth from '../Auth.js';
+import * as auth from '../auth';
 import ProtectedRoute from "./ProtectedRoute";
 import { withRouter } from 'react-router-dom';
 import InfoTooltip from './InfoTooltip';
@@ -40,8 +40,6 @@ class App extends React.Component{
     this.handleLogin = this.handleLogin.bind(this);
     this.handleTokenCheck = this.handleTokenCheck.bind(this);
   }
-
-
 
   handleLogin = () => {
     const email = localStorage.getItem('email');
@@ -209,7 +207,6 @@ loadData() {
   .catch((err)=>{
     console.log(err);
   })
-
 }
 
 handleExit = () => {
@@ -267,48 +264,48 @@ render() {
             handleButton={this.handleRouteRegister}
             handleInfoTooltipPopupOpen={this.handleInfoTooltipPopupOpen}
             onClose={this.closeAllPopups}
-          />
+            />
           </Route>
           <Route path="/sign-in">
             <Login 
             handleLogin={this.handleLogin}
             handleButton={this.handleRouteLogin}
-          />
+            />
           </Route>
           <Route exact path="/">
             {this.state.loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
           </Route>
         </Switch>
         <EditAvatarPopup 
-              isOpen={this.state.isEditAvatarPopupOpen}
-              onClose={this.closeAllPopups}
-              onUpdateAvatar={this.handleUpdateAvatar}
-              /> 
-            <EditProfilePopup 
-              isOpen={this.state.isEditProfilePopupOpen} 
-              onClose={this.closeAllPopups}
-              onUpdateUser={this.handleUpdateUser} />
-            <AddPlacePopup 
-              isOpen={this.state.isAddPlacePopupOpen} 
-              onClose={this.closeAllPopups}
-              onAddCard={this.handlerAddCard}
-              />
-            <PopupWithForm
-              name="delete"
-              title="Вы уверены?"
-              buttonText="Да" 
-              isOpen={false}
-              onClose={this.closeAllPopups}>
-            </PopupWithForm>
-            <ImagePopup
-              card={this.state.selectedCard} 
-              onClose={this.closeAllPopups}/>
-            <InfoTooltip 
-             isOpen={this.state.isTooltipPopupOpen}
-             onClose={this.closeAllPopups}
-             isRegisterSuccess={this.state.isRegisterSuccess}
-            />
-            <Footer />
+          isOpen={this.state.isEditAvatarPopupOpen}
+          onClose={this.closeAllPopups}
+          onUpdateAvatar={this.handleUpdateAvatar}
+          /> 
+        <EditProfilePopup 
+          isOpen={this.state.isEditProfilePopupOpen} 
+          onClose={this.closeAllPopups}
+          onUpdateUser={this.handleUpdateUser} />
+        <AddPlacePopup 
+          isOpen={this.state.isAddPlacePopupOpen} 
+          onClose={this.closeAllPopups}
+          onAddCard={this.handlerAddCard}
+          />
+        <PopupWithForm
+          name="delete"
+          title="Вы уверены?"
+          buttonText="Да" 
+          isOpen={false}
+          onClose={this.closeAllPopups}>
+        </PopupWithForm>
+        <ImagePopup
+          card={this.state.selectedCard} 
+          onClose={this.closeAllPopups}/>
+        <InfoTooltip 
+          isOpen={this.state.isTooltipPopupOpen}
+          onClose={this.closeAllPopups}
+          isRegisterSuccess={this.state.isRegisterSuccess}
+        />
+        <Footer />
         </div>    
     </CurrentUserContext.Provider>
   );

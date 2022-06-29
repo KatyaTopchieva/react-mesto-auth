@@ -1,8 +1,8 @@
 import React from "react";
 import './styles/Login.css';
-import * as auth from '../Auth.js';
+import * as auth from '../auth.js';
 import PopupWithForm from './PopupWithForm';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class Login extends React.Component {
     constructor(props) {
@@ -32,9 +32,9 @@ class Login extends React.Component {
         .then((data) => {
           if(data.token) {          
 
-            this.setState({  // сбросьте стейт, затем в колбэке установите
+            this.setState({
               email: '', 
-              password: '' // затем перенаправьте его в /
+              password: ''
             }, () => {
               this.props.handleLogin();
               this.props.history.push('/');
@@ -50,11 +50,10 @@ class Login extends React.Component {
                 name="login"
                 title="Вход"
                 buttonText="Войти"
-                buttonSecondText=""
                 isOpen={true}
                 submit={this.handleSubmit}
               >
-                <div className="popup__input-container popup__input-container_login">
+                <div className="popup__input-container popup__input-container">
                     <input type="email"
                         value={this.state.email}
                         onChange={this.handleChange}
