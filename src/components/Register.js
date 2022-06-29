@@ -29,7 +29,11 @@ class Register extends React.Component {
         auth.register(this.state.password, this.state.email)
         .then((res) => {
           if( !res.error && res.data){
-            this.props.history.push('/sign-in');
+            this.props.handleInfoTooltipPopupOpen(true);
+            //this.props.history.push('/sign-in');            
+          }
+          else{
+            this.props.handleInfoTooltipPopupOpen(false);
           }
         });
       }
@@ -37,7 +41,6 @@ class Register extends React.Component {
   render() {
     return(
       <div className= "register">
-        <Link to="/sign-in" className="register__button-login">Вход</Link>
         <PopupWithForm
           name="register"
           title="Регистрация"
@@ -46,7 +49,7 @@ class Register extends React.Component {
           isOpen={true}
           submit={this.handleSubmit}
         >
-          <div className="popup__input-container">
+          <div className="popup__input-container popup__input-container_register">
               <input type="email"
                   value={this.state.email}
                   onChange={this.handleChange}
@@ -56,7 +59,7 @@ class Register extends React.Component {
                   placeholder="Email" 
                   required />
               <span className="popup__error email-input-error"></span>
-              <input type="text"
+              <input type="password"
                   value={this.state.password}
                   onChange={this.handleChange}
                   className="popup__input popup__input_el_password"

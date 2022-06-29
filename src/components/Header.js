@@ -21,9 +21,9 @@ class Header extends React.Component {
       return(
         <header className="header">
             <img className="header__logo" src={logo} alt="Логотип" />
-            <div className={this.props.loggedIn ?
-                  'header__email-button-container_visible' : 'header__email-button-container'}>
-                <p className="header__email">{this.props.email}</p>
+            <div className="header__email-button-container">
+                <p className={this.props.loggedIn ?
+                  'header__email' : 'header__email_unVisible'}>{this.props.email}</p>
                 <button type="button" onClick={this.click}
                 className="header__button-exit">{this.props.signLable}</button>
             </div>

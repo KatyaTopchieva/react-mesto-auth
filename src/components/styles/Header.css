@@ -18,17 +18,6 @@
     align-items: center;
     margin: 0;
     padding: 0;
-    visibility: hidden;
-}
-
-.header__email-button-container_visible {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    visibility: visible;
 }
 
 .header__email {
@@ -42,13 +31,19 @@
     padding: 0;
 }
 
+.header__email_unVisible {
+    visibility: hidden;
+}
+
 .header__button-exit {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 22px;
+    background-color: transparent;
     color: #FFF;
+    border: none;
     text-decoration: none;
     padding: 0;
     margin-left: 24px;

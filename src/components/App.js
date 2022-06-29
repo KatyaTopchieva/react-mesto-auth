@@ -16,6 +16,7 @@ import Login from './Login';
 import * as auth from '../Auth.js';
 import ProtectedRoute from "./ProtectedRoute";
 import { withRouter } from 'react-router-dom';
+import InfoTooltip from './InfoTooltip';
 
 class App extends React.Component{
   
@@ -26,6 +27,7 @@ class App extends React.Component{
       isEditProfilePopupOpen: false,
       isAddPlacePopupOpen: false,
       isEditAvatarPopupOpen: false,
+      isTooltipPopupOpen: false,
       currentUser: null,
       cards: [],
       isRegister: false,
@@ -39,6 +41,8 @@ class App extends React.Component{
     this.handleTokenCheck = this.handleTokenCheck.bind(this);
   }
 
+
+
   handleLogin = () => {
     const email = localStorage.getItem('email');
 
@@ -49,9 +53,9 @@ class App extends React.Component{
     this.loadData();
   }
 
-  handleRegister() {
+  handleRegister(success) {
     this.setState({
-      isRegister: true
+      isRegister: success
     })
   }
 
@@ -170,6 +174,10 @@ handleRouteExit = () => {
     this.setState({isAddPlacePopupOpen: true});
 }
 
+handleInfoTooltipPopupOpen = (isRegisterSuccess) => {
+  this.setState({isTooltipPopupOpen: true, isRegisterSuccess: isRegisterSuccess});
+}
+
 handleCardClick = (selectedCard) => {
   this.setState({selectedCard: selectedCard});
 }
@@ -179,6 +187,7 @@ closeAllPopups = () => {
   this.setState({isEditProfilePopupOpen: false});
   this.setState({isAddPlacePopupOpen: false});
   this.setState({selectedCard: null});
+  this.setState({isTooltipPopupOpen: false});
 }
 
 componentDidMount() {
@@ -256,6 +265,8 @@ render() {
             <Register
             handleRegister={this.handleRegister}
             handleButton={this.handleRouteRegister}
+            handleInfoTooltipPopupOpen={this.handleInfoTooltipPopupOpen}
+            onClose={this.closeAllPopups}
           />
           </Route>
           <Route path="/sign-in">
@@ -293,6 +304,11 @@ render() {
             <ImagePopup
               card={this.state.selectedCard} 
               onClose={this.closeAllPopups}/>
+            <InfoTooltip 
+            isOpen={this.state.isTooltipPopupOpen}
+             onClose={this.closeAllPopups}
+             isRegisterSuccess={this.state.isRegisterSuccess}
+            />
             <Footer />
         </div>    
     </CurrentUserContext.Provider>

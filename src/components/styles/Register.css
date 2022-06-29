@@ -6,21 +6,20 @@
 .popup_type_register {
     background-color: #000;
     position: static;
-    
+    height: max-content;
     justify-content: flex-start;
 }
 
-.popup__form {
+.popup__form_register {
     background-color: #000;
     color: #FFF;
 }
-
-.popup__form-title {
+.popup__form-title_register {
     text-align: center;
     color: #FFF;
 }
 
-.popup__input-container {
+.popup__input-container_register {
     padding-bottom: 162px;
 }
 
@@ -29,11 +28,11 @@
     color: #FFF;
 }
 
-.popup__close-button {
+.popup__close-button_register {
     visibility: hidden;
 }
 
-.popup__button {
+.popup__button_register {
     background-color: #FFF;
     color: #000;
     margin-bottom: 18px;

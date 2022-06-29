@@ -1,7 +1,7 @@
 import React from "react";
 import PopupWithForm from './PopupWithForm';
 import {CurrentUserContext} from '../contexts/CurrentUserContext';
-import { api } from '../utils/api.js';
+import './styles/EditAvatarPopup.css';
 
 function EditAvatarPopup(props) {
     const currentUser = React.useContext(CurrentUserContext);

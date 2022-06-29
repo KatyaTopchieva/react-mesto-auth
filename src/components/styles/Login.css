@@ -6,17 +6,17 @@
     margin-top: 24px;
 }
 
-.popup__form {
+.popup__form_login {
     background-color: #000;
     color: #FFF;
 }
 
-.popup__form-title {
+.popup__form-title_login {
     text-align: center;
     color: #FFF;
 }
 
-.popup__input-container {
+.popup__input-container_login {
     padding-bottom: 162px;
 }
 
@@ -25,11 +25,11 @@
     color: #FFF;
 }
 
-.popup__close-button {
+.popup__close-button_login {
     visibility: hidden;
 }
 
-.popup__button {
+.popup__button_login {
     background-color: #FFF;
     color: #000;
     margin-bottom: 18px;

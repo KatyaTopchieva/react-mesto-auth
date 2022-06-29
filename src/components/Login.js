@@ -46,7 +46,6 @@ class Login extends React.Component {
       render() {
           return(
             <>
-              <Link to="/sign-up" className="login__button-register">Регистрация</Link>
               <PopupWithForm
                 name="login"
                 title="Вход"
@@ -55,7 +54,7 @@ class Login extends React.Component {
                 isOpen={true}
                 submit={this.handleSubmit}
               >
-                <div className="popup__input-container">
+                <div className="popup__input-container popup__input-container_login">
                     <input type="email"
                         value={this.state.email}
                         onChange={this.handleChange}
@@ -65,7 +64,7 @@ class Login extends React.Component {
                         placeholder="Email" 
                         required />
                     <span className="popup__error email-input-error"></span>
-                    <input type="text"
+                    <input type="password"
                         value={this.state.password}
                         onChange={this.handleChange}
                         className="popup__input popup__input_el_password"
