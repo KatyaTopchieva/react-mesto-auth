@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/mesto-react-auth/static/css/main.fc7b85e8.css",
+    "main.js": "/mesto-react-auth/static/js/main.ea187a6f.js",
+    "static/js/787.0fc3b920.chunk.js": "/mesto-react-auth/static/js/787.0fc3b920.chunk.js",
+    "static/media/Inter-500.woff": "/mesto-react-auth/static/media/Inter-500.9053572c46aeb4b16caa.woff",
+    "static/media/Inter-900.woff": "/mesto-react-auth/static/media/Inter-900.c6938660eec019fefd68.woff",
+    "static/media/Inter-400.woff": "/mesto-react-auth/static/media/Inter-400.8c206db99195777c6769.woff",
+    "static/media/Inter-500.woff2": "/mesto-react-auth/static/media/Inter-500.293fd13dbca5a3e450ef.woff2",
+    "static/media/Inter-900.woff2": "/mesto-react-auth/static/media/Inter-900.15ca31c0a2a68f76d2d1.woff2",
+    "static/media/Inter-400.woff2": "/mesto-react-auth/static/media/Inter-400.c8ba52b05a9ef10f4758.woff2",
+    "static/media/logo.svg": "/mesto-react-auth/static/media/logo.3d8293a241b315143f02a9df076e611b.svg",
+    "index.html": "/mesto-react-auth/index.html",
+    "static/media/heart.svg": "/mesto-react-auth/static/media/heart.db3cc635425329f33f64.svg",
+    "static/media/del.svg": "/mesto-react-auth/static/media/del.4af3841e0d351a5225a0.svg",
+    "static/media/heart-dark.svg": "/mesto-react-auth/static/media/heart-dark.b9e22b12c21f10fbc48a.svg",
+    "static/media/pencil.svg": "/mesto-react-auth/static/media/pencil.ae1a976ddb506239e9f0.svg",
+    "static/media/close.svg": "/mesto-react-auth/static/media/close.ec56f2e806c2d5f2e13c.svg",
+    "static/media/slash.svg": "/mesto-react-auth/static/media/slash.d86f9ef14d5daf49f6d4.svg",
+    "static/media/plus.svg": "/mesto-react-auth/static/media/plus.faab81195141bf296f8b.svg",
+    "main.fc7b85e8.css.map": "/mesto-react-auth/static/css/main.fc7b85e8.css.map",
+    "main.ea187a6f.js.map": "/mesto-react-auth/static/js/main.ea187a6f.js.map",
+    "787.0fc3b920.chunk.js.map": "/mesto-react-auth/static/js/787.0fc3b920.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fc7b85e8.css",
+    "static/js/main.ea187a6f.js"
+  ]
+}
