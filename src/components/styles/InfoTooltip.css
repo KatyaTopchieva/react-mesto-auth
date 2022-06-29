@@ -1,8 +1,34 @@
+.popup__form_infotooltip {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   position: relative;
+}
 
+.popup__form-title_infotooltip {
+    text-align: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29px;
+    width: 358px;
+    height: 58px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    bottom: 60px;
+    right: 36px;
+}
 
+.popup__fieldset_infotooltip {
+   height: 330px;
+}
 
 .popup__infotooltip-image {
     height: 120px;
+    padding: 60px 155px 32px 155px;
+    margin: 0;
 }
 
 .popup__button_infotooltip {
