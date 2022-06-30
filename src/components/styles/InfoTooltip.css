@@ -2,6 +2,15 @@
    display: flex;
    flex-direction: column;
    align-items: center;
+   
+}
+
+.popup__container-infotooltip {
+   width: 430px;
+   height: 330px;
+   background: #FFF;
+   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+   border-radius: 10px;
    position: relative;
 }
 
@@ -14,15 +23,9 @@
     line-height: 29px;
     width: 358px;
     height: 58px;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
-    position: absolute;
-    bottom: 60px;
-    right: 36px;
-}
-
-.popup__fieldset_infotooltip {
-   height: 330px;
+    color: #000;
 }
 
 .popup__infotooltip-image {
@@ -31,7 +34,17 @@
     margin: 0;
 }
 
-.popup__button_infotooltip {
-   visibility: hidden;
-   opacity: 1;
+
+
+.popup__close-button:hover {
+   opacity: 0.6;
+}
+
+@media screen and (max-width: 540px) {
+   .popup__close-button {
+       width: 20px;
+       height: 20px;
+       top: -32px;
+       right: 0; 
+   }
 }

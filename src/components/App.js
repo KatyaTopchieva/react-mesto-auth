@@ -41,6 +41,22 @@ class App extends React.Component{
     this.handleTokenCheck = this.handleTokenCheck.bind(this);
   }
 
+  setUpRegistration = (password, email) => {
+    auth.register(password, email)
+        .then((res) => {
+          if( !res.error && res.data){
+            this.handleInfoTooltipPopupOpen(true);
+            this.props.history.push('/sign-in');            
+          }
+          else{
+            this.handleInfoTooltipPopupOpen(false);
+          }
+        })
+        .catch(e => {
+          console.log(e)
+        }); 
+  }
+
   handleLogin = () => {
     const email = localStorage.getItem('email');
 
@@ -223,7 +239,10 @@ handlerAddCard = (name, link) =>{
   api.addCard(name, link)
     .then((newCard) => {
         this.setCards([newCard, ...this.state.cards]); 
-    });  
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
 }
 
 render() {
@@ -261,9 +280,9 @@ render() {
           <Route path="/sign-up">
             <Register
             handleRegister={this.handleRegister}
-            handleButton={this.handleRouteRegister}
-            handleInfoTooltipPopupOpen={this.handleInfoTooltipPopupOpen}
+            handleButton={this.handleRouteRegister}            
             onClose={this.closeAllPopups}
+            setUpRegistration={this.setUpRegistration}
             />
           </Route>
           <Route path="/sign-in">
@@ -271,9 +290,6 @@ render() {
             handleLogin={this.handleLogin}
             handleButton={this.handleRouteLogin}
             />
-          </Route>
-          <Route exact path="/">
-            {this.state.loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
           </Route>
         </Switch>
         <EditAvatarPopup 

@@ -26,16 +26,7 @@ class Register extends React.Component {
     e.preventDefault();
 
     if (this.state.password){
-        auth.register(this.state.password, this.state.email)
-        .then((res) => {
-          if( !res.error && res.data){
-            this.props.handleInfoTooltipPopupOpen(true);
-            this.props.history.push('/sign-in');            
-          }
-          else{
-            this.props.handleInfoTooltipPopupOpen(false);
-          }
-        });
+        this.props.setUpRegistration(this.state.password, this.state.email);
       }
   }
   render() {
