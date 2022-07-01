@@ -10,17 +10,15 @@ function EditAvatarPopup(props) {
       let handleInputAvatar = (e) => {
         setAvatar(e.target.value)
     }
-    
+        
+    let finish = () => {
+      setAvatar(' ');
+      props.onClose();
+    }
+
     let submit = (event) =>{
         event.preventDefault();
-        props.onUpdateAvatar(avatar)
-        .then((x) => {
-           setAvatar(' ');
-           props.onClose();
-        })
-        .catch((err)=>{
-          console.log(err);
-        })        
+        props.onUpdateAvatar(avatar, finish)     
     }
        
 return (

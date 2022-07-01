@@ -22,18 +22,15 @@ function EditProfilePopup(props) {
       setDescription(e.target.value)
   }
  
+  let finish = () => {
+    setName(' ');
+    setDescription(' ');
+    props.onClose();  
+  }
+
   let submit = (event) =>{
       event.preventDefault();
-      props.onUpdateUser(name, description)
-      .then((x) => {
-        setName(' ');
-        setDescription(' ');
-        props.onClose();          
-      })      
-    .catch((err)=>{
-        console.log(err);
-    })
-
+      props.onUpdateUser(name, description, finish)
   }
 
   return (

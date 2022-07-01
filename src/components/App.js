@@ -57,13 +57,18 @@ class App extends React.Component{
         }); 
   }
 
-  authorize = (email, password) => {
-    return auth.authorize(email, password);
+  authorize = (email, password, finish) => {
+    auth.authorize(email, password)
+      .then((data) => {
+        finish(data);
+      })
+      .catch(e => {
+        console.log(e)
+      }); 
   }
 
   handleLogin = () => {
     const email = localStorage.getItem('email');
-
     this.setState({
       loggedIn: true,
       email: email
@@ -155,23 +160,31 @@ handleRouteExit = () => {
     }
   }
 
-  handleUpdateUser = (name, about) => {
-    return api.editProfile(name, about)
-    .then(value => {
-      this.setState( {currentUser: value} );
-    })
+  handleUpdateUser = (name, about, finish) => {
+    api.editProfile(name, about)
+      .then(value => {
+        this.setState( {currentUser: value} );
+        finish();
+      })
+      .catch((err)=>{
+        console.log(err);
+      })  
   }
 
   handleRefreshUser = (value) => {
       this.setState( {currentUser: value} );
   }
 
-  handleUpdateAvatar = (avatar) => {
+  handleUpdateAvatar = (avatar, finish) => {
 
-    return api.editAvatar(avatar)
-    .then(value => {
-      this.setState( {currentUser: value} );
-     })
+    api.editAvatar(avatar)
+      .then(value => {
+        this.setState( {currentUser: value} );
+        finish();
+      })
+      .catch((err)=>{
+        console.log(err);
+      })  
   }
   
   handleEditAvatarClick = () => {
@@ -232,11 +245,15 @@ handleExit = () => {
   })
 }
 
-handlerAddCard = (name, link) =>{
+handlerAddCard = (name, link, finish) =>{
 
- return api.addCard(name, link)
+ api.addCard(name, link)
     .then((newCard) => {
         this.setCards([newCard, ...this.state.cards]); 
+        finish();
+    })
+    .catch((err)=>{
+        console.log(err);
     })
 }
 

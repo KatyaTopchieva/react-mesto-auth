@@ -22,27 +22,40 @@ class Login extends React.Component {
         this.setState({
           [name]: value
         });
-      }
-      handleSubmit(e){
-        e.preventDefault();
-        if (!this.state.email || !this.state.password){
-            return;
-        }
-      
-        this.props.authorize(this.state.email, this.state.password)
-        .then((data) => {
-          if(data.token) {
-            this.setState({
-              email: '', 
-              password: ''
-            }, () => {
-              this.props.handleLogin();
-              this.props.history.push('/');
-            })
-          }  
+    }
+ 
+    finish = (data) => {
+      if(data.token) {
+        this.setState({
+          email: '', 
+          password: ''
+        }, () => {
+          this.props.handleLogin();
+          this.props.history.push('/');
         })
-        .catch(err => console.log(err));
+      }  
+    }
+
+    handleSubmit(e){
+      e.preventDefault();
+      if (!this.state.email || !this.state.password){
+          return;
       }
+    
+      this.props.authorize(this.state.email, this.state.password, this.finish);
+      // .then((data) => {
+      //   if(data.token) {
+      //     this.setState({
+      //       email: '', 
+      //       password: ''
+      //     }, () => {
+      //       this.props.handleLogin();
+      //       this.props.history.push('/');
+      //     })
+      //   }  
+      // })
+      // .catch(err => console.log(err));
+    }
       render() {
           return(
             <>

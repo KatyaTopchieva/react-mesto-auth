@@ -13,17 +13,15 @@ function AddPlacePopup(props) {
         setLink(e.target.value)
     }
 
+    let finish = () => {
+        setName(' ');
+        setLink(' ');
+        props.onClose();
+    }
+
     let submit = (event) =>{
         event.preventDefault();
-        props.onAddCard(name, link)
-        .then ( (x) => {
-            setName(' ');
-            setLink(' ');
-            props.onClose();
-        })
-        .catch((err)=>{
-            console.log(err);
-          })
+        props.onAddCard(name, link, finish)
     }
 
     return (

@@ -22,6 +22,7 @@ class Register extends React.Component {
       [name]: value
     });
   }
+
   handleSubmit = (e) => {
     e.preventDefault();
 
