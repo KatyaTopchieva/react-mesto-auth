@@ -12,7 +12,6 @@
 
 .popup__form_register {
     background-color: #000;
-    color: #FFF;
 }
 
 .popup__form-title_register {
@@ -22,10 +21,10 @@
 
 .popup__input-container_register {
     padding-bottom: 162px;
+    color: #FFF;
 }
 
-.popup__input {
-    border-bottom: 2px solid #CCCCCC;
+.popup__input_register {
     color: #FFF;
 }
 
@@ -37,22 +36,6 @@
     background-color: #FFF;
     color: #000;
     margin-bottom: 18px;
-}
-
-.register__button-login {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 22px;
-    color: #FFF;
-    background-color: #000;
-    position: fixed;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    padding: 0;
-    margin: 0;
 }
 
 .register__signin {
@@ -81,30 +64,4 @@
     margin-left: 5px;
     text-decoration: none;
     cursor: pointer;
-}
-
-@media screen and (min-width: 320px) {
-    .register__button-login {
-        top: 28px;
-        right: 8vh;
-    }
-}
-
-@media screen and (min-width: 540px) {
-    .register__button-login {
-        top: 51px;
-        right: 12vh;
-    }
-}
-
-@media screen and (min-width: 1280px) {
-    .register__button-login {
-        right: 23%;
-    }
-}
-
-@media screen and (min-width: 1440px) {
-    .register__button-login {
-        right: 26%;
-    }
 }

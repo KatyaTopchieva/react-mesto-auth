@@ -28,10 +28,10 @@ class Login extends React.Component {
         if (!this.state.email || !this.state.password){
             return;
         }
-        auth.authorize(this.state.email, this.state.password)
+      
+        this.props.authorize(this.state.email, this.state.password)
         .then((data) => {
-          if(data.token) {          
-
+          if(data.token) {
             this.setState({
               email: '', 
               password: ''
@@ -57,7 +57,7 @@ class Login extends React.Component {
                     <input type="email"
                         value={this.state.email}
                         onChange={this.handleChange}
-                        className="popup__input popup__input_el_email"
+                        className="popup__input popup__input_el_email popup__input_login"
                         id="email-input"
                         name="email" 
                         placeholder="Email" 
@@ -66,7 +66,7 @@ class Login extends React.Component {
                     <input type="password"
                         value={this.state.password}
                         onChange={this.handleChange}
-                        className="popup__input popup__input_el_password"
+                        className="popup__input popup__input_el_password popup__input_login"
                         id="password-input"
                         name="password" 
                         placeholder="Пароль" 

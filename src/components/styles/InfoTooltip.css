@@ -2,7 +2,6 @@
    display: flex;
    flex-direction: column;
    align-items: center;
-   
 }
 
 .popup__container-infotooltip {
@@ -32,19 +31,4 @@
     height: 120px;
     padding: 60px 155px 32px 155px;
     margin: 0;
-}
-
-
-
-.popup__close-button:hover {
-   opacity: 0.6;
-}
-
-@media screen and (max-width: 540px) {
-   .popup__close-button {
-       width: 20px;
-       height: 20px;
-       top: -32px;
-       right: 0; 
-   }
 }

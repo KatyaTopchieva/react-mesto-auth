@@ -57,6 +57,10 @@ class App extends React.Component{
         }); 
   }
 
+  authorize = (email, password) => {
+    return auth.authorize(email, password);
+  }
+
   handleLogin = () => {
     const email = localStorage.getItem('email');
 
@@ -152,12 +156,9 @@ handleRouteExit = () => {
   }
 
   handleUpdateUser = (name, about) => {
-    api.editProfile(name, about)
+    return api.editProfile(name, about)
     .then(value => {
       this.setState( {currentUser: value} );
-        })
-    .catch((err)=>{
-        console.log(err);
     })
   }
 
@@ -167,13 +168,10 @@ handleRouteExit = () => {
 
   handleUpdateAvatar = (avatar) => {
 
-    api.editAvatar(avatar)
+    return api.editAvatar(avatar)
     .then(value => {
       this.setState( {currentUser: value} );
-        })
-    .catch((err)=>{
-        console.log(err);
-    })
+     })
   }
   
   handleEditAvatarClick = () => {
@@ -236,12 +234,9 @@ handleExit = () => {
 
 handlerAddCard = (name, link) =>{
 
-  api.addCard(name, link)
+ return api.addCard(name, link)
     .then((newCard) => {
         this.setCards([newCard, ...this.state.cards]); 
-    })
-    .catch((err)=>{
-      console.log(err);
     })
 }
 
@@ -288,6 +283,7 @@ render() {
           <Route path="/sign-in">
             <Login 
             handleLogin={this.handleLogin}
+            authorize={this.authorize}
             handleButton={this.handleRouteLogin}
             />
           </Route>

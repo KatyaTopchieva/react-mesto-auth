@@ -1,7 +1,6 @@
 import React from "react";
 import PopupWithForm from './PopupWithForm';
 import {CurrentUserContext} from '../contexts/CurrentUserContext';
-import './styles/EditAvatarPopup.css';
 
 function EditAvatarPopup(props) {
     const currentUser = React.useContext(CurrentUserContext);
@@ -14,9 +13,14 @@ function EditAvatarPopup(props) {
     
     let submit = (event) =>{
         event.preventDefault();
-        props.onUpdateAvatar(avatar);
-        setAvatar(' ');
-        props.onClose();
+        props.onUpdateAvatar(avatar)
+        .then((x) => {
+           setAvatar(' ');
+           props.onClose();
+        })
+        .catch((err)=>{
+          console.log(err);
+        })        
     }
        
 return (

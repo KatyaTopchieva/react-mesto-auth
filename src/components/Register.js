@@ -44,7 +44,7 @@ class Register extends React.Component {
               <input type="email"
                   value={this.state.email}
                   onChange={this.handleChange}
-                  className="popup__input popup__input_el_email"
+                  className="popup__input popup__input_el_email popup__input_register"
                   id="email-input"
                   name="email" 
                   placeholder="Email" 
@@ -53,7 +53,7 @@ class Register extends React.Component {
               <input type="password"
                   value={this.state.password}
                   onChange={this.handleChange}
-                  className="popup__input popup__input_el_password"
+                  className="popup__input popup__input_el_password popup__input_register"
                   id="password-input"
                   name="password" 
                   placeholder="Пароль" 

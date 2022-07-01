@@ -15,10 +15,15 @@ function AddPlacePopup(props) {
 
     let submit = (event) =>{
         event.preventDefault();
-        props.onAddCard(name, link);
-        setName(' ');
-        setLink(' ');
-        props.onClose();
+        props.onAddCard(name, link)
+        .then ( (x) => {
+            setName(' ');
+            setLink(' ');
+            props.onClose();
+        })
+        .catch((err)=>{
+            console.log(err);
+          })
     }
 
     return (
