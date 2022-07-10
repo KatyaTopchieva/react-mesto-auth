@@ -26,6 +26,7 @@
 
 .popup__input_register {
     color: #FFF;
+    border-bottom: 2px solid #CCCCCC;
 }
 
 .popup__close-button_register {
